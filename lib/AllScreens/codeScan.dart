@@ -15,95 +15,6 @@ class _QRScanState extends State<QRScan> {
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
-  _connect() async {
-    var name = "Manju Hangaragi";
-    var email = "jiiroueeda@gmail.com";
-    var pass = "Save@1234";
-    var id = "h-saini";
-    var note = 'Hi! I want to connect with you.' + 'a';
-
-    print("here1");
-
-    var browser = await puppeteer.launch();
-
-    print("here2");
-
-    // Open a new tab
-    var page = await browser.newPage();
-
-    print("here3");
-
-    // Go to a page and wait to be fully loaded
-    await page.goto('https://www.linkedin.com/login', wait: Until.networkIdle);
-
-    print("here4");
-
-    // Do something... See other examples
-    await page.evaluate(r'''(email) => {
-      return document.getElementById("username").value = email;
-  }''', args: [email]);
-
-    await page.evaluate(r'''(pass) => {
-    return document.getElementById("password").value = pass;
-  }''', args: [pass]);
-
-    // await page.$eval('".btn__primary--large", elem => elem.click()');
-
-    await page.evaluate(r'''() => {
-    const data = document.getElementsByClassName("btn__primary--large");
-    data.click();
-    return "";
-  }''');
-
-    print("here5");
-
-    await Future.delayed(const Duration(seconds: 3));
-
-    await page.goto("https://www.linkedin.com/in/$id");
-
-    await page.evaluate(r'''(name) => {
-    try {
-      const str = "Invite " + name.split(" ")[0];
-      let dt = 0;
-      const data = document.querySelectorAll('button');
-    
-      for (let i=0; i<data.length; i++) {
-        let d = data[i].ariaLabel === null? "" : data[i].ariaLabel.split(" ")[0] + " " + data[i].ariaLabel.split(" ")[1];
-        console.log(d+" "+str);
-        if ((d === str) && (dt!=0)) {
-          data[i].click();
-          return "";
-        } else if (d === str) {
-          dt = 1;
-        }
-      }
-      return "";
-    } catch(err) {
-      console.log("Error is "+err);
-      return "";
-    }
-  }''', args: [name]);
-
-    print("here6");
-
-    await page.evaluate(r'''() => {
-    const data = document.querySelectorAll('button')[2];
-    data.click();
-    return "";
-  }''');
-
-    await page.evaluate(r'''() => {
-    const data = document.querySelectorAll('button')[2];
-    data.click();
-    return "";
-  }''');
-
-    print("here7");
-
-    // Gracefully close the browser's process
-    await browser.close();
-  }
-
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
   @override
@@ -203,7 +114,7 @@ class _QRScanState extends State<QRScan> {
               ),
             ),
           ),
-          ElevatedButton(onPressed: _connect, child: Text("Connect"))
+          ElevatedButton(onPressed: null, child: Text("Connect"))
         ],
       ),
     );
