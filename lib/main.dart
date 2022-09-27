@@ -1,7 +1,5 @@
-import 'package:smart_app/AllScreens/codeScan.dart';
+import 'package:flutter_app/AllScreens/FormScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_app/AllScreens/DisplayQr.dart';
-import 'package:smart_app/AllScreens/FormScreen.dart';
 
 void main() {
   runApp(const MyApp());
