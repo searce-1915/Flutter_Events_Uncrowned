@@ -1,5 +1,7 @@
 import 'package:flutter_app/AllScreens/FormScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/AllScreens/codeScan.dart';
+import 'package:flutter_app/AllScreens/displayQr.dart';
 
 void main() {
   runApp(const MyApp());
